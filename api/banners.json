@@ -1,0 +1,12 @@
+{
+  "carouselBanners": [
+    {
+      "imageUrl": "https://servicos.barueri.sp.gov.br/cms/Upload/AGASALHO-2025_PILOTO_PORTAL_657X405PX.png",
+      "altText": "Descrição do Banner 1"
+    },
+    {
+      "imageUrl": "https://servicos.barueri.sp.gov.br/cms/Upload/FINAN%C3%87AS.png",
+      "altText": "Descrição do Banner 2"
+    }
+  ]
+}

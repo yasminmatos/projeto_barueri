@@ -1,0 +1,37 @@
+[
+  {
+    "title": "IPTU 2ª Via",
+    "category": "Serviço",
+    "url": "/servicos/html"
+  },
+  {
+    "title": "Matrícula em Creche",
+    "category": "Serviço",
+    "url": "/servicos/html"
+  },
+  {
+    "title": "Diário Oficial",
+    "category": "Documento",
+    "url": "/html"
+  },
+  {
+    "title": "Protocolo de Documentos",
+    "category": "Serviço",
+    "url": "/servicos/html"
+  },
+  {
+    "title": "Concursos Públicos",
+    "category": "Cidadão",
+    "url": "/concursos.html"
+  },
+  {
+    "title": "Campanha de Vacinação",
+    "category": "Notícia",
+    "url": "/noticias/"
+  },
+  {
+    "title": "Telefones Úteis",
+    "category": "Contato",
+    "url": "/contato/"
+  }
+]

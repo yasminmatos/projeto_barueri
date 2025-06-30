@@ -1,0 +1,98 @@
+[
+  {
+    "id": 201,
+    "title": "Assistência Social",
+    "imageUrl": "/images/logo-maos.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 202,
+    "title": "IPTU e Taxas",
+    "imageUrl": "/images/logo-dinheiro.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 203,
+    "title": "Habitação",
+    "imageUrl": "/images/logo-casa.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 204,
+    "title": "Saúde",
+    "imageUrl": "/images/logo-hospital.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 205,
+    "title": "Inclusão",
+    "imageUrl": "/images/logo-inclusao.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 206,
+    "title": "Atendimento ao Cidadão",
+    "imageUrl": "/images/logo-cidadao.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 207,
+    "title": "Transporte",
+    "imageUrl": "/images/logo-transporte.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 208,
+    "title": "Agricultura",
+    "imageUrl": "/images/logo-agro.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 209,
+    "title": "Agricultura",
+    "imageUrl": "/images/logo-agro.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 210,
+    "title": "Agricultura",
+    "imageUrl": "/images/logo-agro.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 211,
+    "title": "Agricultura",
+    "imageUrl": "/images/logo-agro.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 212,
+    "title": "Agricultura",
+    "imageUrl": "/images/logo-agro.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 213,
+    "title": "Agricultura",
+    "imageUrl": "/images/logo-agro.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 214,
+    "title": "Agricultura",
+    "imageUrl": "/images/logo-agro.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 215,
+    "title": "Agricultura",
+    "imageUrl": "/images/logo-agro.webp",
+    "linkUrl": ""
+  },
+  {
+    "id": 216,
+    "title": "Agricultura",
+    "imageUrl": "/images/logo-agro.webp",
+    "linkUrl": ""
+  }
+]

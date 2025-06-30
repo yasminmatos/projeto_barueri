@@ -1,0 +1,30 @@
+{
+  "id": "caminhada-tea-2025",
+  "titulo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo minus suscipit",
+  "dataPublicacao": "29 DE ABRIL DE 2025",
+  "imagemPrincipalUrl": "https://www.alphatimes.com.br/wp-content/uploads/2022/12/Captura-da-Web_21-12-2022_125026_granjanews.com_.br_-660x330.jpeg",
+  "resumo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo minus suscipit.",
+  "corpo": [
+    {
+      "tipo": "paragrafo",
+      "conteudo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo minus suscipit nam ratione quibusdam quos tempora placeat provident quisquam dolore. Libero eveniet non temporibus accusantium? Perferendis eius a sequi itaque."
+    },
+    {
+      "tipo": "paragrafo",
+      "conteudo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo minus suscipit nam ratione quibusdam quos tempora placeat provident quisquam dolore. Libero eveniet non temporibus accusantium? Perferendis eius a sequi itaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo minus suscipit nam ratione quibusdam quos tempora placeat provident quisquam dolore. Libero eveniet non temporibus accusantium? Perferendis eius a sequi itaque."
+    },
+    {
+      "tipo": "imagem",
+      "url": "https://servicos.barueri.sp.gov.br/cms/Upload/PORTAL%20DA%20SA%C3%9ADE.png",
+      "legenda": "Multidão se reuniu no parque para apoiar a causa da inclusão."
+    },
+    {
+      "tipo": "subtitulo",
+      "conteudo": "Voz às famílias e foco na informação"
+    },
+    {
+      "tipo": "paragrafo",
+      "conteudo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo minus suscipit nam ratione quibusdam quos tempora placeat provident quisquam dolore. Libero eveniet non temporibus accusantium? Perferendis eius a sequi itaque."
+    }
+  ]
+}

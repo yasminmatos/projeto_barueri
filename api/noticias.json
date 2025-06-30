@@ -1,0 +1,51 @@
+[
+  {
+    "id": 101,
+    "isLarge": true,
+    "imageUrl": "https://servicos.barueri.sp.gov.br/cms/Upload/PORTAL%20DA%20SA%C3%9ADE.png",
+    "title": "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "linkUrl": "/noticias/cursos-qualificacao"
+  },
+  {
+    "id": 102,
+    "isLarge": false,
+    "imageUrl": "https://servicos.barueri.sp.gov.br/cms/Upload/PORTAL%20DA%20SA%C3%9ADE.png",
+    "title": "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+    "linkUrl": "/noticias/novo-parque"
+  },
+  {
+    "id": 103,
+    "isLarge": false,
+    "imageUrl": "https://servicos.barueri.sp.gov.br/cms/Upload/DENGUE_PORTAL_657X405PX_V2.png",
+    "title": "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
+    "linkUrl": "/noticias/vacinacao-gripe"
+  },
+  {
+    "id": 104,
+    "isLarge": false,
+    "imageUrl": "https://servicos.barueri.sp.gov.br/cms/Upload/PORTAL%20DA%20SA%C3%9ADE.png",
+    "title": "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
+    "linkUrl": "/noticias/festival-musica"
+  },
+  {
+    "id": 105,
+    "isLarge": false,
+    "imageUrl": "https://servicos.barueri.sp.gov.br/cms/Upload/DENGUE_PORTAL_657X405PX_V2.png",
+    "title": "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
+    "linkUrl": "/noticias/festival-musica"
+  },
+  {
+    "id": 106,
+    "isLarge": false,
+    "imageUrl": "https://servicos.barueri.sp.gov.br/cms/Upload/PORTAL%20DA%20SA%C3%9ADE.png",
+    "title": "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
+    "linkUrl": "/noticias/festival-musica"
+  },
+  {
+    "id": 107,
+    "isLarge": false,
+    "imageUrl": "https://servicos.barueri.sp.gov.br/cms/Upload/PORTAL%20DA%20SA%C3%9ADE.png",
+    "title": "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
+    "linkUrl": "/noticias/festival-musica"
+  }
+]
