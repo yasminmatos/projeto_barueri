@@ -208,86 +208,7 @@ main {
   color: var(--cor-primaria);
 }
 
-.hero-section {
-  position: relative;
-  height: 60vh;
-  min-height: 450px;
-  background-image: url('/img/foto-da-cidade.jpg');
-  background-size: cover;
-  background-position: center center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Camada escura semi-transparente sobre a imagem de fundo */
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-
-/* O conteúdo do Hero fica acima da camada escura */
-.hero-section .hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-title {
-  color: var(--cor-branca);
-  font-weight: 700;
-  font-family: var(--fonte-titulos);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.hero-search-form {
-  max-width: 700px;
-}
-
-.hero-search-form .form-control {
-  border: none;
-  /* Remove a borda padrão */
-  border-radius: var(--raio-borda);
-}
-
-.hero-search-form .form-control:focus {
-  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.5);
-  /* Efeito de foco do bootstrap */
-}
-
-.hero-search-form .btn {
-  border-radius: var(--raio-borda);
-}
-
-.search-suggestions-container {
-  max-width: 700px;
-  /* Mesma largura da barra de busca */
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: var(--raio-borda);
-  backdrop-filter: blur(5px);
-}
-
-.search-suggestions-container .list-group-item {
-  background-color: transparent;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-}
-
-.search-suggestions-container a {
-  text-decoration: none;
-  color: var(--cor-texto);
-  font-size: 0.9rem;
-}
-
-.search-suggestions-container a:hover {
-  color: var(--cor-primaria);
-}
-
-/* -- Hero search -- */
+/* --- search --- */
 .hero-section {
   position: relative;
   height: 60vh;
@@ -307,27 +228,31 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-/* O conteúdo (título, busca) fica acima da camada escura */
 .hero-section .hero-content {
   position: relative;
   z-index: 2;
+  text-align: center;
+  width: 90%;
+  max-width: 900px;
 }
 
 .hero-title {
-  color: var(--cor-branca, #ffffff);
+  color: #ffffff;
   font-weight: 700;
   font-family: var(--fonte-titulos, 'Montserrat', sans-serif);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
 }
 
-/* --- Search hero forms --- */
-/* Limita a largura do formulário na tela */
+/* --- busca--- */
 .hero-search-form {
   max-width: 700px;
+  margin: 0 auto;
 }
 
 .hero-search-form .search-wrapper {
@@ -335,15 +260,25 @@ main {
 }
 
 .hero-search-form .form-control {
-  border: none;
-  border-radius: var(--raio-borda, 0.25rem);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  height: 3.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+}
 
+.hero-search-form .form-control::placeholder {
+  color: #6c757d;
 }
 
 .hero-search-form .form-control:focus {
-  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.5);
+  background-color: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.35);
+  border-color: #28a745;
 }
 
+/* Ícone de busca dentro do input */
 .hero-search-form .search-icon-btn {
   position: absolute;
   top: 50%;
@@ -351,39 +286,39 @@ main {
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  padding: 0;
   color: #6c757d;
   font-size: 1.25rem;
   z-index: 10;
-  transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-.hero-search-form .form-control:not(:placeholder-shown)+.search-icon-btn {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* --- Sugestões de Busca --- */
+/* --- sugestões de busca --- */
 .search-suggestions-container {
   max-width: 700px;
-  background-color: rgba(255, 255, 255, 0.95);
+  margin: 0.5rem auto 0;
+  background-color: #ffffff;
   border-radius: var(--raio-borda, 0.25rem);
-  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .search-suggestions-container .list-group-item {
   background-color: transparent;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 1px solid #e9ecef !important;
 }
 
 .search-suggestions-container a {
   text-decoration: none;
   color: var(--cor-texto, #212529);
-  font-size: 0.9rem;
 }
 
 .search-suggestions-container a:hover {
-  color: var(--cor-primaria, #27ae60);
+  color: var(--cor-primaria, #28a745);
+}
+
+/* Remove o "x" (botão de limpar) no Chrome, Safari e Edge */
+.hero-search-form input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
 }
 
 /* -- Noticias swiper-section -- */
@@ -455,9 +390,8 @@ main {
 }
 
 .service-card img {
-  height: 50px;
+  height: 70px;
   width: auto;
-  margin-bottom: 0.75rem;
 }
 
 .service-card span {
@@ -1390,7 +1324,7 @@ div[vw] {
   }
 
   .service-card span {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 }
 

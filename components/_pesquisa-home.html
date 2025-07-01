@@ -1,25 +1,29 @@
 <section class="hero-section">
-  <div class="hero-content">
-    <div class="container text-center">
-      <h2 class="hero-title mb-4">O que você procura?</h2>
-      <form action="" method="GET" class="hero-search-form mx-auto" role="search">
-        <div class="search-wrapper">        
-          <input 
-            type="search" 
-            name="q" 
-            id="hero-search-input" class="form-control form-control-lg" 
-            placeholder="Buscar..." 
-            aria-label="Campo de busca"
-            autocomplete="off">
-          <button class="btn search-icon-btn" type="submit" aria-label="Buscar">
-            <i class="bi bi-search"></i>
-          </button>
+  <div class="hero-content container-fluid text-center"> 
+    <h2 class="hero-title mb-4">O que você procura?</h2>
+    <div class="row">
+      <div class="col-lg-10 mx-auto">    
+        <form action="" method="GET" class="hero-search-form" role="search">
+          <div class="search-wrapper">
+            <input 
+              type="search" 
+              name="q" 
+              id="hero-search-input" 
+              class="form-control form-control-lg" 
+              placeholder="Buscar..." 
+              aria-label="Campo de busca"
+              autocomplete="off">
+            <button class="btn search-icon-btn" type="submit" aria-label="Buscar">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+        <div class="search-suggestions-container mx-auto">
+          <ul id="suggestions-list" class="list-group list-group-flush text-start">
+          </ul>
         </div>
-      </form>
-      <div class="search-suggestions-container mx-auto">
-        <ul id="suggestions-list" class="list-group list-group-flush text-start">
-        </ul>
       </div>
     </div>
+
   </div>
 </section>
