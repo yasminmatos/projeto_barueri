@@ -277,57 +277,246 @@ async function renderGridNoticiasHome() {
     console.error("Erro ao renderizar a grade de notícias:", error);
   }
 }
-document.addEventListener("DOMContentLoaded", function () {
-  // Chama a função principal que vai montar a página de notícia
-  renderizarPaginaDeNoticia();
-});
+
 async function renderizarPaginaDeNoticia() {
   try {
     const response = await fetch("/api/noticias-detalhe.json");
     if (!response.ok) {
-      throw new Error(
-        "Não foi possível encontrar o arquivo de dados da notícia."
-      );
+      throw new Error("Não foi possível encontrar o arquivo de dados da notícia.");
     }
     const noticia = await response.json();
+    //atualizando metatags
+    const dadosParaMetaTags = {
+      title: noticia.titulo,
+      description: noticia.resumo,
+      imageUrl: noticia.imagemPrincipalUrl
+    };
+    atualizarMetaTags(dadosParaMetaTags);
 
-    // Encontra e preenche cada elemento pelo ID
+    // preenche o título da aba do navegador
+    document.title = `${noticia.titulo} - Prefeitura de Barueri`;
+
+    // preenche o dom
     document.getElementById("noticia-titulo").textContent = noticia.titulo;
-    document.getElementById("noticia-data").textContent =
-      noticia.dataPublicacao;
+    document.getElementById("noticia-data").textContent = noticia.dataPublicacao;
     document.getElementById("noticia-resumo").textContent = noticia.resumo;
 
     const imgPrincipal = document.getElementById("noticia-imagem-principal");
     imgPrincipal.src = noticia.imagemPrincipalUrl;
     imgPrincipal.alt = noticia.titulo;
 
-    // cria o HTML para cada bloco de conteúdo
+    // corpo do artigo
     const corpoContainer = document.getElementById("noticia-corpo");
-    corpoContainer.innerHTML = ""; // Limpa o container antes de adicionar
+    let corpoHTML = "";
 
     noticia.corpo.forEach((bloco) => {
-      let elementoHTML = "";
       switch (bloco.tipo) {
         case "paragrafo":
-          elementoHTML = `<p>${bloco.conteudo}</p>`;
+          corpoHTML += `<p>${bloco.conteudo}</p>`;
           break;
         case "subtitulo":
-          elementoHTML = `<p class="article-subtitle">${bloco.conteudo}</p>`;
+          corpoHTML += `<h1 class="article-subtitle">${bloco.conteudo}</h1>`;
           break;
         case "imagem":
-          elementoHTML = `
+          corpoHTML += `
             <figure class="article-inline-image text-center">
-              <img src="${bloco.url}" alt="${bloco.legenda}" class=" img-article">
+              <img src="${bloco.url}" alt="${bloco.legenda}" class="img-article img-fluid rounded">
               <figcaption>${bloco.legenda}</figcaption>
             </figure>
           `;
           break;
       }
-      corpoContainer.innerHTML += elementoHTML;
     });
+
+    // insere todo o conteudo de uma vez
+    corpoContainer.innerHTML = corpoHTML;
+
+    const relatedListContainer = document.getElementById('related-news-list-container');
+
+    // Verifica se o container existe e se há notícias relacionadas nos dados
+    if (relatedListContainer && noticia.noticiasRelacionadas && noticia.noticiasRelacionadas.length > 0) {
+
+      // Abre a lista usando classes do Bootstrap
+      let relatedHTML = '<ul class="list-group list-group-flush">';
+
+      // Cria um item de lista para cada notícia relacionada
+      noticia.noticiasRelacionadas.forEach(relacionada => {
+        relatedHTML += `
+          <li class="news-tag">
+            <a href="${relacionada.url}">${relacionada.titulo}</a>
+          </li>
+        `;
+      });
+
+      // Fecha a lista
+      relatedHTML += '</ul>';
+
+      // Insere todo o HTML gerado no container específico
+      relatedListContainer.innerHTML = relatedHTML;
+    }
+
   } catch (error) {
     console.error("Erro ao renderizar a página de notícia:", error);
-    document.getElementById("noticia-titulo").textContent =
-      "Erro ao carregar a notícia.";
+    document.getElementById("noticia-titulo").textContent = "Erro ao carregar a notícia.";
   }
 }
+
+async function renderizarPaginaDeServicos() {
+  try {
+    const response = await fetch('/api/servicos-interna.json');
+    if (!response.ok) throw new Error("Falha ao carregar o banco de dados.");
+    const database = await response.json();
+    const todosOsServicos = database.servicos;
+
+    // pega os parâmetros da url
+    const params = new URLSearchParams(window.location.search);
+    const servicoId = params.get('id');
+
+    if (servicoId) {
+      // se tem um id na url a página é a de detalhe
+      const idNumerico = parseInt(servicoId);
+      const servico = todosOsServicos.find(s => s.id === idNumerico);
+
+      if (servico) {
+        renderizarDetalhe(servico);
+      } else {
+        throw new Error(`Serviço com ID ${servicoId} não encontrado.`);
+      }
+    } else {
+      // se nao tem id, é a grid de cards servicos
+      renderizarGrid(todosOsServicos);
+    }
+  } catch (error) {
+    console.error("Erro ao renderizar a página de serviços:", error);
+  }
+}
+/**
+ * atualiza as metatags
+ * essa função pode ser usada em qualquer página (notícias, serviços, etc)
+ * @param {object} metaData - um objeto contendo as informações para as tags
+ * @param {string} metaData.title - o título para a tag og:title
+ * @param {string} metaData.description - a descrição para a tag og:description
+ * @param {string} metaData.imageUrl -  url da imagem para a tag og:image
+ */
+function atualizarMetaTags(metaData) {
+  // função auxiliar para encontrar e definir o atributo content
+  const setMetaTag = (property, content) => {
+    const el = document.querySelector(`meta[property='${property}']`);
+    if (el) el.setAttribute('content', content || ''); // usa o conteúdo ou uma string vazia
+  };
+
+  // função para a meta tag de description padrão
+  const setMetaDescription = (content) => {
+    const el = document.querySelector('meta[name="description"]');
+    if (el) el.setAttribute('content', content || '');
+  }
+
+  // atualiza as tags com os dados padronizados recebidos
+  setMetaDescription(metaData.description);
+  setMetaTag('og:title', metaData.title);
+  setMetaTag('og:description', metaData.description);
+  setMetaTag('og:url', window.location.href);
+
+  // verifica se uma imagem foi fornecida
+  if (metaData.imageUrl) {
+    // garante que a url da imagem seja absoluta com https
+    const urlAbsolutaDaImagem = new URL(metaData.imageUrl, window.location.origin).href;
+    setMetaTag('og:image', urlAbsolutaDaImagem);
+  } else {
+    // se não houver imagem específica usa uma imagem padrão
+    setMetaTag('og:image', new URL('/images/logo-padrao-redes.jpg', window.location.origin).href);
+  }
+
+  // atualiza a tag canonical
+  const canonicalLink = document.querySelector("link[rel='canonical']");
+  if (canonicalLink) {
+    canonicalLink.href = window.location.href;
+  }
+
+  //console.log("Meta tags atualizadas com sucesso:", metaData.title);
+}
+/**
+ * função auxiliar que renderiza a grid de servicos
+ * @param {Array} servicos - lista completa de serviços
+ */
+function renderizarGrid(servicos) {
+  const container = document.getElementById('servicos-grid-container');
+  if (!container) return; // se não for a página grid
+
+  const cardsHTML = servicos.map(servico => `
+    <div class="col-md-6">
+      <a href="/pages/servico-interna.html?id=${servico.id}" class="grid-card">
+        <div class="grid-card__icon"><i class="${servico.icone}"></i></div>
+        <div class="grid-card__content">
+          <h3 class="grid-card__category">${servico.categoria.toUpperCase()}</h3>
+          <p class="grid-card__description">${servico.descricaoResumida}</p>
+          <span class="grid-card__count">${String(servico.totalServicos).padStart(2, '0')} SERVIÇOS</span>
+        </div>
+      </a>
+    </div>
+  `).join('');
+
+  container.innerHTML = cardsHTML;
+}
+
+/**
+ * Função auxiliar que apenas renderiza a página de detalhe
+ * @param {object} servico - objeto do serviço específico 
+ */
+function renderizarDetalhe(servico) {
+  // verifica página de detalhe 
+  if (!document.getElementById('service-title')) return;
+
+  // preenche o conteudo da página no title
+  document.title = `${servico.nome || servico.categoria} - Prefeitura de Barueri`;
+
+  const setContent = (id, content) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = content;
+  };
+
+  setContent('breadcrumb-service-name', servico.nome || servico.categoria);
+  setContent('service-title', servico.nome || servico.categoria);
+  setContent('service-description', servico.descricaoCompleta);
+  setContent('service-atendimento', servico.contato.atendimento);
+  setContent('service-telefones', servico.contato.telefones);
+  setContent('service-email', servico.contato.email);
+  setContent('service-endereco', servico.contato.endereco);
+
+  const digitalAccessLink = document.getElementById('digital-access-link');
+  if (digitalAccessLink) {
+    if (servico.linkServicoDigital) {
+      digitalAccessLink.href = servico.linkServicoDigital;
+      digitalAccessLink.classList.remove('disabled');
+      digitalAccessLink.innerHTML = 'ACESSE <i class="bi bi-cursor-fill"></i>';
+    } else {
+      digitalAccessLink.removeAttribute('href');
+      digitalAccessLink.classList.add('disabled');
+      digitalAccessLink.innerHTML = 'Acesso Digital Indisponível';
+    }
+  }
+
+  const accordionContainer = document.getElementById('serviceAccordion');
+  if (accordionContainer) {
+    accordionContainer.innerHTML = servico.informacoesDetalhadas.map((item, index) => {
+      const isFirst = index === 0;
+      return `<div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button ${isFirst ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="${isFirst}">${item.titulo}</button></h2><div id="collapse${index}" class="accordion-collapse collapse ${isFirst ? 'show' : ''}" data-bs-parent="#serviceAccordion"><div class="accordion-body">${item.conteudo}</div></div></div>`;
+    }).join('');
+  }
+
+  // prepara os dados para enviar para as metatags
+  const dadosParaMetaTags = {
+    title: servico.nome || servico.categoria,
+    description: servico.descricaoCompleta,
+    imageUrl: servico.icone
+  };
+
+  // chama função que atualiza as tags 
+  atualizarMetaTags(dadosParaMetaTags);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  //paginas
+  renderizarPaginaDeNoticia();
+  renderizarPaginaDeServicos();
+});

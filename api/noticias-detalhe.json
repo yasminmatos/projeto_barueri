@@ -26,5 +26,22 @@
       "tipo": "paragrafo",
       "conteudo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo minus suscipit nam ratione quibusdam quos tempora placeat provident quisquam dolore. Libero eveniet non temporibus accusantium? Perferendis eius a sequi itaque."
     }
+  ],
+  "noticiasRelacionadas": [
+    {
+      "id": "outra-noticia-1",
+      "titulo": "Notícias relacionadas link 1",
+      "url": "#"
+    },
+    {
+      "id": "outra-noticia-2",
+      "titulo": "Notícias relacionadas link 2",
+      "url": "#"
+    },
+    {
+      "id": "outra-noticia-3",
+      "titulo": "Notícias relacionadas link 3",
+      "url": "#"
+    }
   ]
 }

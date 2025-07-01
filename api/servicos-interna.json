@@ -1,0 +1,118 @@
+{
+  "servicos": [
+    {
+      "id": 1,
+      "categoria": "Categoria Genérica 1",
+      "setor": "Setor A",
+      "descricaoResumida": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec.",
+      "descricaoCompleta": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet, lacus sed sollicitudin blandit, quam eros semper sem, et congue tellus erat eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam vitae odio quis nunc suscipit tempor.",
+      "totalServicos": 7,
+      "icone": "bi bi-bandaid",
+      "linkServicoDigital": "#",
+      "informacoesDetalhadas": [
+        {
+          "titulo": "Label: Título da Informação 1",
+          "conteudo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+        },
+        {
+          "titulo": "Label: Título da Informação 2",
+          "conteudo": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
+        }
+      ],
+      "contato": {
+        "atendimento": "Segunda a Sexta, das 9h às 18h",
+        "telefones": "(11) 00000-0000",
+        "email": "email.generico@site.com",
+        "endereco": "Rua Genérica, 123 - Bairro Padrão"
+      },
+      "servicosRelacionados": [
+        { "nome": "Label Serviço Relacionado", "url": "#" }
+      ]
+    },
+    {
+      "id": 2,
+      "categoria": "Categoria Genérica 2",
+      "setor": "Setor B",
+      "descricaoResumida": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+      "descricaoCompleta": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
+      "totalServicos": 14,
+      "icone": "bi bi-archive",
+      "linkServicoDigital": "#",
+      "informacoesDetalhadas": [
+        {
+          "titulo": "Label: Pergunta Frequente A",
+          "conteudo": "Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim."
+        },
+        {
+          "titulo": "Label: Pergunta Frequente B",
+          "conteudo": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet."
+        }
+      ],
+      "contato": {
+        "atendimento": "Segunda a Sexta, das 8h às 17h",
+        "telefones": "(11) 11111-1111",
+        "email": "outro.email@site.com",
+        "endereco": "Avenida Padrão, 456 - Centro"
+      },
+      "servicosRelacionados": [
+        { "nome": "Label Serviço Relacionado", "url": "#" },
+        { "nome": "Outro Serviço Relacionado", "url": "#" }
+      ]
+    },
+    {
+      "id": 3,
+      "categoria": "Categoria Genérica 3",
+      "setor": "Setor C",
+      "descricaoResumida": "Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed.",
+      "descricaoCompleta": "Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.",
+      "totalServicos": 5,
+      "icone": "bi bi-bandaid",
+      "linkServicoDigital": "#",
+      "informacoesDetalhadas": [
+        {
+          "titulo": "Label: Documentos Necessários",
+          "conteudo": "Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus."
+        }
+      ],
+      "contato": {
+        "atendimento": "Atendimento 24 horas",
+        "telefones": "(11) 22222-2222",
+        "email": "contato.24h@site.com",
+        "endereco": "Serviço exclusivamente online"
+      },
+      "servicosRelacionados": [
+        { "nome": "Label Serviço Relacionado", "url": "#" }
+      ]
+    },
+    {
+      "id": 4,
+      "categoria": "Categoria Genérica 4",
+      "setor": "Setor B",
+      "descricaoResumida": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+      "descricaoCompleta": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
+      "totalServicos": 2,
+      "icone": "bi bi-archive",
+      "linkServicoDigital": "#",
+      "informacoesDetalhadas": [
+        {
+          "titulo": "Label: Pergunta Frequente A",
+          "conteudo": "Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim."
+        },
+        {
+          "titulo": "Label: Pergunta Frequente B",
+          "conteudo": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet."
+        }
+      ],
+      "contato": {
+        "atendimento": "Segunda a Sexta, das 8h às 17h",
+        "telefones": "(11) 11111-1111",
+        "email": "outro.email@site.com",
+        "endereco": "Avenida Padrão, 456 - Centro"
+      },
+      "servicosRelacionados": [
+        { "nome": "Label Serviço Relacionado", "url": "#" },
+        { "nome": "Outro Serviço Relacionado", "url": "#" }
+      ]
+    }
+  ]
+}
