@@ -22,6 +22,34 @@ const loadComponent = (url, elementId) => {
     });
 };
 
+function gerarHeadPadrao() {
+  // Pega a URL base do site para construir caminhos absolutos
+  const baseUrl = window.location.origin;
+
+  // Injeta o HTML padrão dentro da tag <head>
+  document.head.innerHTML += `
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Prefeitura de Barueri" />
+
+    <link rel="icon" href="${baseUrl}/images/favicon.ico" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <meta name="description" content="Site oficial da Prefeitura de Barueri">
+    <meta property="og:title" content="Prefeitura de Barueri" />
+    <meta property="og:description" content="Site oficial da Prefeitura de Barueri" />
+    <meta property="og:image" content="${baseUrl}/images/logo-padrao-redes.jpg" />
+    <meta property="og:url" content="${window.location.href}" />
+    <link rel="canonical" href="${window.location.href}" />
+  `;
+}
 //espera o dom carregar para chamar a função que carrega os componentes
 document.addEventListener("DOMContentLoaded", function () {
   loadComponent("/components/_acessibilidade.html", "acessibilidade").then(

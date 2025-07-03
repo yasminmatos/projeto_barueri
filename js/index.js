@@ -422,7 +422,7 @@ function renderizarDetalhe(servico) {
     console.log('entrou')
     let relatedHTML = '<ul class="list-group">';
     relatedHTML += servico.servicosRelacionados.map(relacionado =>
-      `<li class="list-group-item"><a href="${relacionado.url}">${relacionado.nome}</a></li>`
+      `<li class=""><a href="${relacionado.url}">${relacionado.nome}</a></li>`
     ).join('');
     relatedHTML += '</ul>';
     relatedContainer.innerHTML = relatedHTML;
@@ -644,30 +644,13 @@ async function renderizarPaginaDeNoticia() {
     if (tituloContainer) tituloContainer.textContent = "Erro ao carregar a notícia.";
   }
 }
+
 document.addEventListener("DOMContentLoaded", function () {
   //paginas
   renderizarPaginaDeNoticia();
   renderizarPaginaDeServicos();
   renderizarGridGlobalDeNoticias();
   renderizaFooter();
-
-  let debounceTimeout;
-  document.getElementById('search-news-input').addEventListener('input', function () {
-    clearTimeout(debounceTimeout);
-
-    const termoBusca = this.value.trim();
-
-    debounceTimeout = setTimeout(() => {
-      const urlParams = new URLSearchParams();
-      urlParams.set('page', 1);
-      if (termoBusca) {
-        urlParams.set('search', termoBusca);
-      } else {
-        urlParams.delete('search');
-      }
-      window.location.href = `/pages/noticia.html?${urlParams.toString()}`;
-    }, 500);
-  });
 
   document.getElementById('search-news-input').addEventListener('input', function () {
     const valor = this.value.trim();
@@ -677,4 +660,32 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = '/pages/noticia.html?page=1';
     }
   });
+
+  /*search noticias global */
+  const form = document.getElementById('search-form');
+  const input = document.getElementById('search-news-input');
+  const icon = document.getElementById('search-icon-button');
+
+  if (form && input && icon) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      console.log("Formulário enviado! Executando a busca...");
+
+      const termoBusca = input.value.trim();
+      const urlParams = new URLSearchParams();
+
+      urlParams.set('page', '1');
+      if (termoBusca) {
+        urlParams.set('search', termoBusca);
+      }
+
+      window.location.href = `/pages/noticia.html?${urlParams.toString()}`;
+    });
+
+    icon.addEventListener('click', function () {
+      form.requestSubmit();
+    });
+
+  }
 });
