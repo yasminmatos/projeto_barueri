@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const menuLinks = [
     { texto: "Início", url: "/pages/index.html" },
     { texto: "Serviços", url: "/pages/servico.html" },
-    { texto: "Notícias", url: "/pages/noticia-interna.html" },
+    { texto: "Notícias", url: "/pages/noticia.html" },
   ];
 
   // --- FUNÇÃO PARA RENDERIZAR O MENU ---
