@@ -146,7 +146,6 @@ async function initPesquisaHome() {
     }
   });
 }
-
 async function renderBannersHome() {
   const response = await fetch("/api/banners.json");
 
@@ -188,7 +187,6 @@ async function renderBannersHome() {
     pagination: { el: ".swiper-pagination", clickable: true },
   });
 }
-
 async function renderServicosCarrossel() {
   try {
     const response = await fetch("/api/servicos.json");
@@ -215,8 +213,6 @@ async function renderServicosCarrossel() {
 
     // Insere todo o HTML gerado no wrapper
     swiperWrapper.innerHTML = slidesHTML;
-
-    // INICIALIZA O SWIPER
     new Swiper(".services-swiper", {
       slidesPerView: 2,
       grid: {
@@ -277,90 +273,6 @@ async function renderGridNoticiasHome() {
     console.error("Erro ao renderizar a grade de notícias:", error);
   }
 }
-
-async function renderizarPaginaDeNoticia() {
-  try {
-    const response = await fetch("/api/noticias-detalhe.json");
-    if (!response.ok) {
-      throw new Error("Não foi possível encontrar o arquivo de dados da notícia.");
-    }
-    const noticia = await response.json();
-    //atualizando metatags
-    const dadosParaMetaTags = {
-      title: noticia.titulo,
-      description: noticia.resumo,
-      imageUrl: noticia.imagemPrincipalUrl
-    };
-    atualizarMetaTags(dadosParaMetaTags);
-
-    // preenche o título da aba do navegador
-    document.title = `${noticia.titulo} - Prefeitura de Barueri`;
-
-    // preenche o dom
-    document.getElementById("noticia-titulo").textContent = noticia.titulo;
-    document.getElementById("noticia-data").textContent = noticia.dataPublicacao;
-    document.getElementById("noticia-resumo").textContent = noticia.resumo;
-
-    const imgPrincipal = document.getElementById("noticia-imagem-principal");
-    imgPrincipal.src = noticia.imagemPrincipalUrl;
-    imgPrincipal.alt = noticia.titulo;
-
-    // corpo do artigo
-    const corpoContainer = document.getElementById("noticia-corpo");
-    let corpoHTML = "";
-
-    noticia.corpo.forEach((bloco) => {
-      switch (bloco.tipo) {
-        case "paragrafo":
-          corpoHTML += `<p>${bloco.conteudo}</p>`;
-          break;
-        case "subtitulo":
-          corpoHTML += `<h1 class="article-subtitle">${bloco.conteudo}</h1>`;
-          break;
-        case "imagem":
-          corpoHTML += `
-            <figure class="article-inline-image text-center">
-              <img src="${bloco.url}" alt="${bloco.legenda}" class="img-article img-fluid rounded">
-              <figcaption>${bloco.legenda}</figcaption>
-            </figure>
-          `;
-          break;
-      }
-    });
-
-    // insere todo o conteudo de uma vez
-    corpoContainer.innerHTML = corpoHTML;
-
-    const relatedListContainer = document.getElementById('related-news-list-container');
-
-    // Verifica se o container existe e se há notícias relacionadas nos dados
-    if (relatedListContainer && noticia.noticiasRelacionadas && noticia.noticiasRelacionadas.length > 0) {
-
-      // Abre a lista usando classes do Bootstrap
-      let relatedHTML = '<ul class="list-group list-group-flush">';
-
-      // Cria um item de lista para cada notícia relacionada
-      noticia.noticiasRelacionadas.forEach(relacionada => {
-        relatedHTML += `
-          <li class="news-tag">
-            <a href="${relacionada.url}">${relacionada.titulo}</a>
-          </li>
-        `;
-      });
-
-      // Fecha a lista
-      relatedHTML += '</ul>';
-
-      // Insere todo o HTML gerado no container específico
-      relatedListContainer.innerHTML = relatedHTML;
-    }
-
-  } catch (error) {
-    console.error("Erro ao renderizar a página de notícia:", error);
-    document.getElementById("noticia-titulo").textContent = "Erro ao carregar a notícia.";
-  }
-}
-
 async function renderizarPaginaDeServicos() {
   try {
     const response = await fetch('/api/servicos-interna.json');
@@ -460,7 +372,7 @@ function renderizarGrid(servicos) {
 }
 
 /**
- * Função auxiliar que apenas renderiza a página de detalhe
+ * função auxiliar que apenas renderiza a página de detalhe
  * @param {object} servico - objeto do serviço específico 
  */
 function renderizarDetalhe(servico) {
@@ -504,6 +416,20 @@ function renderizarDetalhe(servico) {
     }).join('');
   }
 
+  const relatedContainer = document.getElementById('related-services-list');
+
+  if (relatedContainer && servico.servicosRelacionados && servico.servicosRelacionados.length > 0) {
+    console.log('entrou')
+    let relatedHTML = '<ul class="list-group">';
+    relatedHTML += servico.servicosRelacionados.map(relacionado =>
+      `<li class="list-group-item"><a href="${relacionado.url}">${relacionado.nome}</a></li>`
+    ).join('');
+    relatedHTML += '</ul>';
+    relatedContainer.innerHTML = relatedHTML;
+  } else {
+    console.log('saiu')
+  }
+
   // prepara os dados para enviar para as metatags
   const dadosParaMetaTags = {
     title: servico.nome || servico.categoria,
@@ -515,8 +441,240 @@ function renderizarDetalhe(servico) {
   atualizarMetaTags(dadosParaMetaTags);
 }
 
+async function renderizaFooter() {
+  try {
+    const container = document.querySelector('.footer-media-section-wrapper');
+    if (!container) return;
+
+    const response = await fetch('/api/footer.json');
+    if (!response.ok) throw Error("Dados não encontrados");
+    const data = await response.json();
+
+    const iframe = document.getElementById('main-video-iframe');
+    const caption = document.getElementById('main-video-caption');
+
+    if (iframe && data.video) {
+      iframe.src = data.video.embedUrl;
+      console.log(data.video.embedUrl)
+    }
+    if (caption && data.video) {
+      caption.textContent = data.video.titulo;
+    }
+
+    const playlistNoticias = document.getElementById('video-playlist-container');
+    if (playlistNoticias && data.noticiasPlaylist) {
+      const html = data.noticiasPlaylist.map((item) =>
+        `<a href="${item.url}" class="playlist-item">
+          <img src="${item.imagemUrl}" alt="Thumbnail da notícia ${item.titulo}" />
+          <span>${item.titulo}</span>
+        </a>`
+      ).join('');
+
+      playlistNoticias.innerHTML = html;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/**
+ * busca a lista de todas as notícias e renderiza o grid de cards COM PAGINAÇÃO.
+ */
+async function renderizarGridGlobalDeNoticias() {
+  try {
+    const container = document.getElementById('news-card-grid-container');
+    const paginationContainer = document.getElementById('pagination-container');
+    const searchInput = document.getElementById('search-news-input'); // Pega o input de busca
+
+    if (!container || !paginationContainer || !searchInput) return;
+
+    const CAMINHO_DA_PAGINA = '/pages/noticia.html';
+    const ITENS_POR_PAGINA = 12;
+
+    const params = new URLSearchParams(window.location.search);
+    const paginaAtual = parseInt(params.get('page')) || 1;
+    // pega o termo de busca da URL para manter o filtro durante a paginação
+    const termoBusca = params.get('search') || '';
+
+    // define o valor do input com o termo da busca da url
+    searchInput.value = termoBusca;
+
+    const response = await fetch('/api/noticias-geral.json');
+    if (!response.ok) throw new Error('Dados de notícias não encontrados.');
+    const todasAsNoticias = await response.json();
+
+    const noticiasFiltradas = todasAsNoticias.filter(noticia => {
+      // normaliza o texto
+      const titulo = noticia.titulo
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, '');
+
+      const termoBuscaNormalizado = termoBusca
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, '');
+
+      return titulo.includes(termoBuscaNormalizado);
+    });
+
+    const totalPaginas = Math.ceil(noticiasFiltradas.length / ITENS_POR_PAGINA);
+    const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
+    const fim = inicio + ITENS_POR_PAGINA;
+    const itensDaPagina = noticiasFiltradas.slice(inicio, fim);
+
+    // limpa a tela se nenhum resultado for encontrado
+    if (itensDaPagina.length === 0) {
+      container.innerHTML = `<p class="text-center col-12">Nenhuma notícia encontrada para "${termoBusca}".</p>`;
+      paginationContainer.innerHTML = ''; // limpa a paginação também
+      return;
+    }
+
+    // renderiza os cards
+    const cardsHTML = itensDaPagina.map(noticia => {
+      return `
+        <div class="col-lg-4 col-md-6">
+          <div class="card news-card-global h-100">
+            <a href="${noticia.url}"><img src="${noticia.imagemUrl}" class="card-img-top" alt="${noticia.titulo}"></a>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-center">${noticia.titulo}</h5>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+    container.innerHTML = cardsHTML;
+
+    let paginationHTML = '';
+
+    // função para criar a URL com os parâmetros corretos
+    const criarUrlPagina = (pagina) => {
+      const urlParams = new URLSearchParams();
+      urlParams.set('page', pagina);
+      if (termoBusca) { // adiciona o parâmetro de busca se ele existir
+        urlParams.set('search', termoBusca);
+      }
+      return `${CAMINHO_DA_PAGINA}?${urlParams.toString()}`;
+    };
+
+
+    paginationHTML += `
+      <li class="page-item ${paginaAtual === 1 ? 'disabled' : ''}">
+        <a class="page-link" href="${criarUrlPagina(paginaAtual - 1)}">Anterior</a>
+      </li>
+    `;
+
+    // botões dos números das páginas
+    for (let i = 1; i <= totalPaginas; i++) {
+      paginationHTML += `
+        <li class="page-item ${i === paginaAtual ? 'active' : ''}">
+          <a class="page-link" href="${criarUrlPagina(i)}">${i}</a>
+        </li>
+      `;
+    }
+    paginationHTML += `
+      <li class="page-item ${paginaAtual === totalPaginas ? 'disabled' : ''}">
+        <a class="page-link" href="${criarUrlPagina(paginaAtual + 1)}">Próximo</a>
+      </li>
+    `;
+
+    paginationContainer.innerHTML = paginationHTML;
+
+  } catch (error) {
+    console.error('Erro ao renderizar o grid de notícias:', error);
+    const container = document.getElementById('news-card-grid-container');
+    container.innerHTML = `<p class="text-center text-danger col-12">Ocorreu um erro ao carregar as notícias.</p>`;
+  }
+}
+
+async function renderizarPaginaDeNoticia() {
+  try {
+    const tituloContainer = document.getElementById("noticia-titulo");
+    if (!tituloContainer) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const noticiaId = parseInt(params.get('id'));
+    if (!noticiaId) {
+      return;
+    }
+    const response = await fetch("/api/noticias-geral.json");
+    if (!response.ok) throw new Error("Arquivo de notícias não encontrado.");
+    const todasAsNoticias = await response.json();
+
+    const noticia = todasAsNoticias.find(n => n.id === noticiaId);
+
+    if (noticia) {
+      document.title = `${noticia.titulo} - Prefeitura de Barueri`;
+      tituloContainer.textContent = noticia.titulo;
+      document.getElementById("noticia-data").textContent = noticia.dataPublicacao;
+      document.getElementById("noticia-resumo").textContent = noticia.resumo;
+
+      const imgPrincipal = document.getElementById("noticia-imagem-principal");
+      imgPrincipal.src = noticia.imagemPrincipalUrl;
+      imgPrincipal.alt = noticia.titulo;
+
+      const corpoContainer = document.getElementById("noticia-corpo");
+      corpoContainer.innerHTML = noticia.corpo.map(bloco => {
+        switch (bloco.tipo) {
+          case "paragrafo": return `<p>${bloco.conteudo}</p>`;
+          case "subtitulo": return `<h2 class="article-subtitle">${bloco.conteudo}</h2>`;
+          case "imagem": return `<figure class="article-inline-image text-center"><img src="${bloco.url}" alt="${bloco.legenda}" class="img-article img-fluid rounded"><figcaption>${bloco.legenda}</figcaption></figure>`;
+          default: return '';
+        }
+      }).join('');
+
+      //noticias relacionadas
+      const relatedContainer = document.getElementById('related-news-list-container');
+      if (relatedContainer && noticia.noticiasRelacionadas && noticia.noticiasRelacionadas.length > 0) {
+
+        let relatedHTML = '<ul class="list-group list-group-flush">';
+        relatedHTML += noticia.noticiasRelacionadas.map(relacionada =>
+          `<li class="news-tag"><a href="${relacionada.url}">${relacionada.titulo}</a></li>`
+        ).join('');
+        relatedHTML += '</ul>';
+        relatedContainer.innerHTML = relatedHTML;
+      }
+    } else {
+      tituloContainer.textContent = "Notícia não encontrada.";
+    }
+
+  } catch (error) {
+    console.error("Erro ao renderizar a página de notícia:", error);
+    const tituloContainer = document.getElementById("noticia-titulo");
+    if (tituloContainer) tituloContainer.textContent = "Erro ao carregar a notícia.";
+  }
+}
 document.addEventListener("DOMContentLoaded", function () {
   //paginas
   renderizarPaginaDeNoticia();
   renderizarPaginaDeServicos();
+  renderizarGridGlobalDeNoticias();
+  renderizaFooter();
+
+  let debounceTimeout;
+  document.getElementById('search-news-input').addEventListener('input', function () {
+    clearTimeout(debounceTimeout);
+
+    const termoBusca = this.value.trim();
+
+    debounceTimeout = setTimeout(() => {
+      const urlParams = new URLSearchParams();
+      urlParams.set('page', 1);
+      if (termoBusca) {
+        urlParams.set('search', termoBusca);
+      } else {
+        urlParams.delete('search');
+      }
+      window.location.href = `/pages/noticia.html?${urlParams.toString()}`;
+    }, 500);
+  });
+
+  document.getElementById('search-news-input').addEventListener('input', function () {
+    const valor = this.value.trim();
+    const params = new URLSearchParams(window.location.search);
+    // se o campo estiver vazio, reseta
+    if (valor === '' && params.has('search')) {
+      window.location.href = '/pages/noticia.html?page=1';
+    }
+  });
 });

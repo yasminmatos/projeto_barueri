@@ -1,0 +1,32 @@
+{
+  "video": {
+    "embedUrl": "https://www.youtube.com/embed/GfD7Uj21TUc?si=-7cywVdZWUgrBoqx",
+    "titulo": "Lorem ipsum dolor sit amet consectc"
+  },
+  "noticiasPlaylist": [
+    {
+      "id": "caminhada-inclusao",
+      "titulo": "Lorem ipsum dolor sit amet consectc",
+      "url": "/pages/noticia-interna.html?id=caminhada-inclusao",
+      "imagemUrl": "https://i.ytimg.com/vi/4BrAN8Nd6YU/maxresdefault.jpg"
+    },
+    {
+      "id": "novas-escolas-2025",
+      "titulo": "Lorem ipsum dolor sit amet consectc",
+      "url": "/pages/noticia-interna.html?id=novas-escolas-2025",
+      "imagemUrl": "https://i.ytimg.com/vi/4BrAN8Nd6YU/maxresdefault.jpg"
+    },
+    {
+      "id": "cultura-praca-artes",
+      "titulo": "Lorem ipsum dolor sit amet consectc",
+      "url": "/pages/noticia-interna.html?id=cultura-praca-artes",
+      "imagemUrl": "https://i.ytimg.com/vi/4BrAN8Nd6YU/maxresdefault.jpg"
+    },
+    {
+      "id": "inovacao-saude",
+      "titulo": "Lorem ipsum dolor sit amet consectc",
+      "url": "/pages/noticia-interna.html?id=inovacao-saude",
+      "imagemUrl": "https://i.ytimg.com/vi/4BrAN8Nd6YU/maxresdefault.jpg"
+    }
+  ]
+}

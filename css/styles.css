@@ -1005,16 +1005,18 @@ main {
 }
 
 .related-services ul li a {
-  color: var(--cor-primaria);
+  color: black;
   text-decoration: none;
   display: block;
   padding: 0.25rem 0;
 }
 
-.related-services ul li a:hover {
+.related-services li{
+  list-style: none;
   text-decoration: underline;
 }
 
+/* pagina interna de noticias*/
 .article-title {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
@@ -1107,6 +1109,76 @@ main {
 
 .news-tag a{
   color: black;
+}
+
+/* --- Estilos para o Grid Global de Notícias --- */
+
+.page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.news-card-global {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.news-card-global:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.news-card-global .card-img-top {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  aspect-ratio: 16 / 9; /* Garante que todas as imagens tenham a mesma proporção */
+  object-fit: cover;
+}
+
+.news-card-global .card-body {
+  text-align: left;
+}
+
+.news-card-global .card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cor-primaria-600)
+}
+
+.news-card-global .card-text {
+  font-size: 0.95rem;
+  color: #6c757d; /* Cinza para o resumo */
+  flex-grow: 1; /* Faz o texto crescer para empurrar o botão para baixo */
+}
+
+.news-card-global .btn-primary {
+  background-color: var(--cor-primaria, #28a745);
+  border-color: var(--cor-primaria, #28a745);
+  align-self: flex-start; /* Alinha o botão à esquerda */
+}
+
+/*search noticias*/
+#search-form .search-wrapper {
+  position: relative;
+}
+
+#search-form .search-icon-btn {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 1.25rem;
+  pointer-events: none;
+  /* O ícone não é clicável */
+}
+
+.hidden {
+  display: none !important;
 }
 
 /*--- MODO DE ALTO CONTRASTE ---*/

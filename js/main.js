@@ -48,13 +48,16 @@ document.addEventListener("DOMContentLoaded", function () {
     renderGridNoticiasHome
   );
 
-  loadComponent("/components/_footer.html", "footer").then(() => {
-    // após o footer carregar, atualiza o ano dinamicamente
-    const yearSpan = document.getElementById("current-year");
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    }
-  });
+  loadComponent("/components/_footer.html", "footer")
+    .then(() => {
+      // Este código agora SÓ executa DEPOIS que o HTML do footer foi carregado.
+      const yearSpan = document.getElementById("current-year");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+      console.log("HTML do footer carregado. Agora, tentando renderizar o conteúdo dinâmico...");
+      renderizaFooter(); // Chamamos a função AQUI DENTRO.
+    });
 
   // --- FONTE DE DADOS DO MENU ---
   const menuLinks = [
