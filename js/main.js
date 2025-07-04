@@ -23,10 +23,7 @@ const loadComponent = (url, elementId) => {
 };
 
 function gerarHeadPadrao() {
-  // Pega a URL base do site para construir caminhos absolutos
   const baseUrl = window.location.origin;
-
-  // Injeta o HTML padrão dentro da tag <head>
   document.head.innerHTML += `
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,7 +34,6 @@ function gerarHeadPadrao() {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -47,11 +43,23 @@ function gerarHeadPadrao() {
     <meta property="og:description" content="Site oficial da Prefeitura de Barueri" />
     <meta property="og:image" content="${baseUrl}/images/logo-padrao-redes.jpg" />
     <meta property="og:url" content="${window.location.href}" />
-    <link rel="canonical" href="${window.location.href}" />
   `;
+
+}
+
+function handleVoltarAoTopo() {
+  const btnTop = document.getElementById("btn-top-component");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      btnTop.classList.remove("d-none");
+    } else {
+      btnTop.classList.add("d-none");
+    }
+  });
 }
 //espera o dom carregar para chamar a função que carrega os componentes
 document.addEventListener("DOMContentLoaded", function () {
+  gerarHeadPadrao();
   loadComponent("/components/_acessibilidade.html", "acessibilidade").then(
     () => {
       document.dispatchEvent(new Event("accessibilityReady")); //chama o evento de acessibilidade no index.js
@@ -60,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //chamada dos componentes
   loadComponent("/components/_header.html", "header");
+  loadComponent("/components/_btn-top.html", "btn-top").then(handleVoltarAoTopo);
 
   loadComponent("/components/_pesquisa-home.html", "pesquisa-home").then(
     initPesquisaHome
@@ -78,20 +87,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loadComponent("/components/_footer.html", "footer")
     .then(() => {
-      // Este código agora SÓ executa DEPOIS que o HTML do footer foi carregado.
       const yearSpan = document.getElementById("current-year");
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
       }
-      console.log("HTML do footer carregado. Agora, tentando renderizar o conteúdo dinâmico...");
-      renderizaFooter(); // Chamamos a função AQUI DENTRO.
+      renderizaFooter();
     });
 
   // --- FONTE DE DADOS DO MENU ---
   const menuLinks = [
-    { texto: "Início", url: "/pages/index.html" },
-    { texto: "Serviços", url: "/pages/servico.html" },
-    { texto: "Notícias", url: "/pages/noticia.html" },
+    { texto: "Início", url: "/index.html" },
+    { texto: "Serviços", url: "/servico.html" },
+    { texto: "Notícias", url: "/noticia.html" },
   ];
 
   // --- FUNÇÃO PARA RENDERIZAR O MENU ---
@@ -188,3 +195,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 });
+

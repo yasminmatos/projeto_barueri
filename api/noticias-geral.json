@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "url": "/pages/noticia-interna.html?id=1",
+    "url": "/noticia-interna.html?id=1",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Lorem Ipsum Dolor Sit Amet Consectetur",
     "resumo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.",
@@ -22,18 +22,18 @@
       {
         "id": 2,
         "titulo": "Aliquam Lorem Ante, Dapibus In",
-        "url": "/pages/noticia-interna.html?id=2"
+        "url": "/noticia-interna.html?id=2"
       },
       {
         "id": 3,
         "titulo": "Phasellus Viverra Nulla Ut Metus",
-        "url": "/pages/noticia-interna.html?id=3"
+        "url": "/noticia-interna.html?id=3"
       }
     ]
   },
   {
     "id": 2,
-    "url": "/pages/noticia-interna.html?id=2",
+    "url": "/noticia-interna.html?id=2",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Aliquam Lorem Ante, Dapibus In",
     "resumo": "Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu.",
@@ -49,13 +49,13 @@
       {
         "id": 1,
         "titulo": "Lorem Ipsum Dolor Sit Amet",
-        "url": "/pages/noticia-interna.html?id=1"
+        "url": "/noticia-interna.html?id=1"
       }
     ]
   },
   {
     "id": 3,
-    "url": "/pages/noticia-interna.html?id=3",
+    "url": "/noticia-interna.html?id=3",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Phasellus Viverra Nulla Ut Metus",
     "resumo": "Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante.",
@@ -71,13 +71,13 @@
       {
         "id": 4,
         "titulo": "Donec Sodales Sagittis Magna",
-        "url": "/pages/noticia-interna.html?id=4"
+        "url": "/noticia-interna.html?id=4"
       }
     ]
   },
   {
     "id": 4,
-    "url": "/pages/noticia-interna.html?id=4",
+    "url": "/noticia-interna.html?id=4",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Donec Sodales Sagittis Magna",
     "resumo": "Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.",
@@ -93,13 +93,13 @@
       {
         "id": 5,
         "titulo": "Notícia de Exemplo 5",
-        "url": "/pages/noticia-interna.html?id=5"
+        "url": "/noticia-interna.html?id=5"
       }
     ]
   },
   {
     "id": 5,
-    "url": "/pages/noticia-interna.html?id=5",
+    "url": "/noticia-interna.html?id=5",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 5",
     "resumo": "Resumo da notícia de teste número 5...",
@@ -112,13 +112,13 @@
       {
         "id": 6,
         "titulo": "Notícia de Exemplo 6",
-        "url": "/pages/noticia-interna.html?id=6"
+        "url": "/noticia-interna.html?id=6"
       }
     ]
   },
   {
     "id": 6,
-    "url": "/pages/noticia-interna.html?id=6",
+    "url": "/noticia-interna.html?id=6",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 6",
     "resumo": "Resumo da notícia de teste número 6...",
@@ -131,13 +131,13 @@
       {
         "id": 7,
         "titulo": "Notícia de Exemplo 7",
-        "url": "/pages/noticia-interna.html?id=7"
+        "url": "/noticia-interna.html?id=7"
       }
     ]
   },
   {
     "id": 7,
-    "url": "/pages/noticia-interna.html?id=7",
+    "url": "/noticia-interna.html?id=7",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 7",
     "resumo": "Resumo da notícia de teste número 7...",
@@ -150,13 +150,13 @@
       {
         "id": 8,
         "titulo": "Notícia de Exemplo 8",
-        "url": "/pages/noticia-interna.html?id=8"
+        "url": "/noticia-interna.html?id=8"
       }
     ]
   },
   {
     "id": 8,
-    "url": "/pages/noticia-interna.html?id=8",
+    "url": "/noticia-interna.html?id=8",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 8",
     "resumo": "Resumo da notícia de teste número 8...",
@@ -169,13 +169,13 @@
       {
         "id": 9,
         "titulo": "Notícia de Exemplo 9",
-        "url": "/pages/noticia-interna.html?id=9"
+        "url": "/noticia-interna.html?id=9"
       }
     ]
   },
   {
     "id": 9,
-    "url": "/pages/noticia-interna.html?id=9",
+    "url": "/noticia-interna.html?id=9",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 9",
     "resumo": "Resumo da notícia de teste número 9...",
@@ -188,13 +188,13 @@
       {
         "id": 10,
         "titulo": "Notícia de Exemplo 10",
-        "url": "/pages/noticia-interna.html?id=10"
+        "url": "/noticia-interna.html?id=10"
       }
     ]
   },
   {
     "id": 10,
-    "url": "/pages/noticia-interna.html?id=10",
+    "url": "/noticia-interna.html?id=10",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 10",
     "resumo": "Resumo da notícia de teste número 10...",
@@ -207,13 +207,13 @@
       {
         "id": 11,
         "titulo": "Notícia de Exemplo 11",
-        "url": "/pages/noticia-interna.html?id=11"
+        "url": "/noticia-interna.html?id=11"
       }
     ]
   },
   {
     "id": 11,
-    "url": "/pages/noticia-interna.html?id=11",
+    "url": "/noticia-interna.html?id=11",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 11",
     "resumo": "Resumo da notícia de teste número 11...",
@@ -226,13 +226,13 @@
       {
         "id": 12,
         "titulo": "Notícia de Exemplo 12",
-        "url": "/pages/noticia-interna.html?id=12"
+        "url": "/noticia-interna.html?id=12"
       }
     ]
   },
   {
     "id": 12,
-    "url": "/pages/noticia-interna.html?id=12",
+    "url": "/noticia-interna.html?id=12",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 12",
     "resumo": "Resumo da notícia de teste número 12...",
@@ -245,13 +245,13 @@
       {
         "id": 13,
         "titulo": "Notícia de Exemplo 13",
-        "url": "/pages/noticia-interna.html?id=13"
+        "url": "/noticia-interna.html?id=13"
       }
     ]
   },
   {
     "id": 13,
-    "url": "/pages/noticia-interna.html?id=13",
+    "url": "/noticia-interna.html?id=13",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 13",
     "resumo": "Resumo da notícia de teste número 13...",
@@ -264,13 +264,13 @@
       {
         "id": 14,
         "titulo": "Notícia de Exemplo 14",
-        "url": "/pages/noticia-interna.html?id=14"
+        "url": "/noticia-interna.html?id=14"
       }
     ]
   },
   {
     "id": 14,
-    "url": "/pages/noticia-interna.html?id=14",
+    "url": "/noticia-interna.html?id=14",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 14",
     "resumo": "Resumo da notícia de teste número 14...",
@@ -283,13 +283,13 @@
       {
         "id": 15,
         "titulo": "Notícia de Exemplo 15",
-        "url": "/pages/noticia-interna.html?id=15"
+        "url": "/noticia-interna.html?id=15"
       }
     ]
   },
   {
     "id": 15,
-    "url": "/pages/noticia-interna.html?id=15",
+    "url": "/noticia-interna.html?id=15",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 15",
     "resumo": "Resumo da notícia de teste número 15...",
@@ -302,13 +302,13 @@
       {
         "id": 16,
         "titulo": "Notícia de Exemplo 16",
-        "url": "/pages/noticia-interna.html?id=16"
+        "url": "/noticia-interna.html?id=16"
       }
     ]
   },
   {
     "id": 16,
-    "url": "/pages/noticia-interna.html?id=16",
+    "url": "/noticia-interna.html?id=16",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 16",
     "resumo": "Resumo da notícia de teste número 16...",
@@ -321,13 +321,13 @@
       {
         "id": 17,
         "titulo": "Notícia de Exemplo 17",
-        "url": "/pages/noticia-interna.html?id=17"
+        "url": "/noticia-interna.html?id=17"
       }
     ]
   },
   {
     "id": 17,
-    "url": "/pages/noticia-interna.html?id=17",
+    "url": "/noticia-interna.html?id=17",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 17",
     "resumo": "Resumo da notícia de teste número 17...",
@@ -340,13 +340,13 @@
       {
         "id": 18,
         "titulo": "Notícia de Exemplo 18",
-        "url": "/pages/noticia-interna.html?id=18"
+        "url": "/noticia-interna.html?id=18"
       }
     ]
   },
   {
     "id": 18,
-    "url": "/pages/noticia-interna.html?id=18",
+    "url": "/noticia-interna.html?id=18",
     "imagemUrl": "https://jpimg.com.br/uploads/2024/04/esc20240409006-300x170.jpg",
     "titulo": "Notícia de Exemplo 18",
     "resumo": "Resumo da notícia de teste número 18...",
@@ -359,7 +359,7 @@
       {
         "id": 1,
         "titulo": "Lorem Ipsum Dolor Sit Amet",
-        "url": "/pages/noticia-interna.html?id=1"
+        "url": "/noticia-interna.html?id=1"
       }
     ]
   }

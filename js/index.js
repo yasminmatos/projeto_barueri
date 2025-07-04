@@ -357,7 +357,7 @@ function renderizarGrid(servicos) {
 
   const cardsHTML = servicos.map(servico => `
     <div class="col-md-6">
-      <a href="/pages/servico-interna.html?id=${servico.id}" class="grid-card">
+      <a href="/servico-interna.html?id=${servico.id}" class="grid-card">
         <div class="grid-card__icon"><i class="${servico.icone}"></i></div>
         <div class="grid-card__content">
           <h3 class="grid-card__category">${servico.categoria.toUpperCase()}</h3>
@@ -455,7 +455,6 @@ async function renderizaFooter() {
 
     if (iframe && data.video) {
       iframe.src = data.video.embedUrl;
-      console.log(data.video.embedUrl)
     }
     if (caption && data.video) {
       caption.textContent = data.video.titulo;
@@ -488,7 +487,7 @@ async function renderizarGridGlobalDeNoticias() {
 
     if (!container || !paginationContainer || !searchInput) return;
 
-    const CAMINHO_DA_PAGINA = '/pages/noticia.html';
+    const CAMINHO_DA_PAGINA = '/noticia.html';
     const ITENS_POR_PAGINA = 12;
 
     const params = new URLSearchParams(window.location.search);
@@ -657,7 +656,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
     // se o campo estiver vazio, reseta
     if (valor === '' && params.has('search')) {
-      window.location.href = '/pages/noticia.html?page=1';
+      window.location.href = '/noticia.html?page=1';
     }
   });
 
@@ -680,7 +679,7 @@ document.addEventListener("DOMContentLoaded", function () {
         urlParams.set('search', termoBusca);
       }
 
-      window.location.href = `/pages/noticia.html?${urlParams.toString()}`;
+      window.location.href = `/noticia.html?${urlParams.toString()}`;
     });
 
     icon.addEventListener('click', function () {
