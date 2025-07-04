@@ -1,3 +1,4 @@
+//função encarregada de carregar o componente e inserir na página
 const loadComponent = (url, elementId) => {
   // Retorna o fetch para poder usar .then() depois de chamar a função
   return fetch(url)
@@ -22,6 +23,60 @@ const loadComponent = (url, elementId) => {
     });
 };
 
+const cssUrl = ["/css/styles.css"];
+
+//carrega o estilo e cria a tag
+function loadStyle(url) {
+  return new Promise((resolve, reject) => {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = url;
+    link.onload = () => resolve(link);
+    link.onerror = () =>
+      reject(new Error("Falha ao carregar folha de estilo " + url));
+    document.head.appendChild(link);
+  });
+}
+
+function inicializarVlibras() {
+  //inicializando o html do vlibras
+  const divVlibras = document.createElement("div");
+  divVlibras.setAttribute("vw", ""); //atributo vw do vlibras'
+  divVlibras.classList.add("enabled"); //classe enabled
+  divVlibras.innerHTML = `
+  <div vw-access-button class="active"></div> 
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+  
+`;
+
+  document.body.appendChild(divVlibras);
+  //criar o script do plugin
+  const scriptPlugin = document.createElement("script");
+  scriptPlugin.src = "https://vlibras.gov.br/app/vlibras-plugin.js";
+  const scriptInit = document.createElement("script");
+  scriptInit.textContent = `new window.VLibras.Widget('https://vlibras.gov.br/app')`; //script do vlibras'
+  document.body.appendChild(scriptPlugin);
+  scriptPlugin.onload = () => {
+    document.body.appendChild(scriptInit);
+  };
+
+  scriptPlugin.onerror = () => {
+    console.error("Falha ao carregar o script do plugin VLibras.");
+  };
+}
+
+Promise.all(cssUrl.map((url) => loadStyle(url)))
+  .then(() => {
+    console.log("Todas as folhas de estilo foram carregadas com sucesso.");
+    //agora é seguro inicializar o vlibras
+    inicializarVlibras();
+  })
+  .catch((error) => {
+    console.error("Erro ao carregar uma ou mais folhas de estilo:", error);
+  });
+
 function gerarHeadPadrao() {
   const baseUrl = window.location.origin;
   document.head.innerHTML += `
@@ -44,7 +99,6 @@ function gerarHeadPadrao() {
     <meta property="og:image" content="${baseUrl}/images/logo-padrao-redes.jpg" />
     <meta property="og:url" content="${window.location.href}" />
   `;
-
 }
 
 function handleVoltarAoTopo() {
@@ -68,7 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //chamada dos componentes
   loadComponent("/components/_header.html", "header");
-  loadComponent("/components/_btn-top.html", "btn-top").then(handleVoltarAoTopo);
+  loadComponent("/components/_btn-top.html", "btn-top").then(
+    handleVoltarAoTopo
+  );
 
   loadComponent("/components/_pesquisa-home.html", "pesquisa-home").then(
     initPesquisaHome
@@ -85,14 +141,13 @@ document.addEventListener("DOMContentLoaded", function () {
     renderGridNoticiasHome
   );
 
-  loadComponent("/components/_footer.html", "footer")
-    .then(() => {
-      const yearSpan = document.getElementById("current-year");
-      if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-      }
-      renderizaFooter();
-    });
+  loadComponent("/components/_footer.html", "footer").then(() => {
+    const yearSpan = document.getElementById("current-year");
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+    renderizaFooter();
+  });
 
   // --- FONTE DE DADOS DO MENU ---
   const menuLinks = [
@@ -195,4 +250,3 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 });
-
