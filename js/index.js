@@ -534,10 +534,11 @@ async function renderizarGridGlobalDeNoticias() {
       return `
         <div class="col-lg-4 col-md-6">
           <div class="card news-card-global h-100">
-            <a href="${noticia.url}"><img src="${noticia.imagemUrl}" class="card-img-top" alt="${noticia.titulo}"></a>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title text-center">${noticia.titulo}</h5>
-            </div>
+            <a href="${noticia.url}" class="text-decoration-none"><img src="${noticia.imagemUrl}" class="card-img-top" alt="${noticia.titulo}">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-center">${noticia.titulo}</h5>
+              </div>
+            </a>
           </div>
         </div>
       `;
